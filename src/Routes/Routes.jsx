@@ -12,6 +12,7 @@ import UpdateFoodItem from "../pages/MyProfile/UpdateFoodItem/UpdateFoodItem";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
 import FoodPurchasePage from "../pages/FoodPurchasePage/FoodPurchasePage";
 import MyCart from "../pages/MyProfile/MyCart/MyCart";
+import Blog from "../pages/Blog/Blog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/signUp",
         element: <SignUp />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/foodItems",

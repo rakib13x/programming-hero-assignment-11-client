@@ -40,17 +40,12 @@ const NavBar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
+
       <li>
         <NavLink to="/myprofile">My Profile</NavLink>
       </li>
       <li>
-        <NavLink to="/login">login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/signup">Register</NavLink>
+        <NavLink to="/blog">blog</NavLink>
       </li>
     </>
   ) : (
@@ -58,9 +53,7 @@ const NavBar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/myprofile">My Profile</NavLink>
-      </li>
+
       <li>
         <NavLink to="/login">login</NavLink>
       </li>
@@ -75,13 +68,16 @@ const NavBar = () => {
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className={"btn  text-xl lg:hidden"}>
+            <label
+              tabIndex={0}
+              className={"btn bg-red-500 text-white  text-xl lg:hidden"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="#FFF"
               >
                 <path
                   strokeLinecap="round"
@@ -99,8 +95,12 @@ const NavBar = () => {
             </ul>
           </div>
           <Link to="/">
-            <p className={"btn btn-ghost normal-case text-3xl font-bold "}>
-              EShop
+            <p
+              className={
+                "btn bg-red-500 text-white normal-case text-3xl font-bold "
+              }
+            >
+              FooDo
             </p>
           </Link>
         </div>
@@ -120,7 +120,7 @@ const NavBar = () => {
           ) : (
             <Link to="/signup">
               <div className="flex">
-                <button className="btn  btn-neutral text-white">
+                <button className="btn  bg-red-500  text-white">
                   register
                   <BiLogOutCircle className="text-2xl text-white" />
                 </button>
@@ -130,7 +130,10 @@ const NavBar = () => {
         </div>
         {user && (
           <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <label
+              tabIndex={0}
+              className="btn bg-red-500 text-white btn-circle avatar"
+            >
               <div className="w-10 rounded-full">
                 <img src={user ? user.photoURL : ""} />
               </div>
