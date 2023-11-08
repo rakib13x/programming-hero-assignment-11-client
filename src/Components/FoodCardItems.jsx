@@ -35,10 +35,7 @@ const FoodCardItems = ({ food }) => {
     <div>
       <div className="flex justify-center flex-col">
         <div className="relative group flex justify-center items-center">
-          <img
-            src="https://i.ibb.co/RvYb6Y8/pexels-ray-piedra-1464625-1.png"
-            alt="shoes-1"
-          />
+          <img src={image} alt="shoes-1" />
           <div>
             <Link to={`/food-details/${food._id}`}>
               <button className="opacity-0 group-hover:opacity-100 py-4 w-10/12 sm:w-11/12 md:w-10/12 xl:w-11/12 flex justify-center  bg-red-50 absolute bottom-6 inset-x-6 sm:inset-x-3 md:inset-x-6 lg:inset-x-5 xl:inset-x-4 items-center shadow">
@@ -82,7 +79,7 @@ const FoodCardItems = ({ food }) => {
         <div className="mt-6 flex justify-between w-full">
           <div>
             <p className="text-2xl font-semibold leading-normal text-red-500">
-              $89
+              ${price}
             </p>
           </div>
         </div>

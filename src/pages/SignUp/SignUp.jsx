@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BiLogOutCircle } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
-import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProvider";
 const SignUp = () => {
   const { createUser, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();

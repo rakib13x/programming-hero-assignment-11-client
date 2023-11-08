@@ -1,26 +1,53 @@
-import { createContext, useEffect, useState } from "react";
-import auth from "../../src/firebase/firebase.config.js";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import auth from "../firebase/firebase.config.js";
 
 export const AuthContext = createContext(null);
+const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const createUser = async (email, password, displayName, photoURL) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-  const createUser = (email, password) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, {
+        displayName: displayName,
+        photoURL: photoURL,
+      });
+      console.log("User with displayName:", userCredential.user);
+
+      setUser(userCredential.user);
+      setLoading(false);
+
+      return userCredential;
+    } catch (error) {
+      console.error("Error creating user:", error);
+      throw error;
+    }
   };
 
-  const signIn = (email, password) => {
+  const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+  const signInWithGoogle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
+
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
@@ -29,14 +56,23 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("current User", currentUser);
       setLoading(false);
     });
+
     return () => {
-      return unsubscribe();
+      unsubscribe();
     };
   }, []);
-  const authInfo = { user, loading, createUser, signIn, logOut };
+
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    signInUser,
+    signInWithGoogle,
+    logOut,
+  };
+
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

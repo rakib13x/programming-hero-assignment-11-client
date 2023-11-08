@@ -44,10 +44,7 @@ const FoodDetails = () => {
             <div className="lg:max-w-[1440px] md:max-w-[744px] max-w-[375px] mx-auto bg-red-50 lg:px-10 md:px-6 px-4 py-10 relative">
               <div className="lg:flex items-center gap-8 w-full">
                 <div>
-                  <img
-                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/87jkzx53.png"
-                    alt=""
-                  />
+                  <img src={food.image} alt="" />
                 </div>
                 <div className="lg:mt-0 md:mt-8 mt-6">
                   <div className="md:flex justify-between items-center lg:max-w-[515px] w-full">
@@ -114,25 +111,10 @@ const FoodDetails = () => {
                   </div>
                   <div className="lg:flex mt-8 gap-4">
                     <Link to={`/purchase/${foodDetail._id}`}>
-                      <button className="text-base font-medium leading-none text-gray-800 flex items-center justify-center gap-3 border border-gray-600 lg-max-w-[189px] w-full py-4 lg-mt-0 md-mt-6 mt-4">
+                      <button className="btn btn-block btn-error bg-red-500 text-white">
                         Purchase
                       </button>
                     </Link>
-                    <button className="text-base font-medium leading-none text-gray-800 flex items-center justify-center gap-3 border border-gray-600 lg-max-w-[189px] w-full py-4 lg-mt-0 md-mt-6 mt-4">
-                      <svg
-                        width={16}
-                        height={16}
-                        viewBox="0 0 16 16"
-                        fill="#FF0000"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M7.99994 14C7.80306 14 7.60931 13.9406 7.43744 13.825C6.26244 13.0281 4.55619 11.7937 3.33119 10.3C2.08119 8.77813 1.48119 7.2125 1.49994 5.51875C1.51869 3.57813 3.07806 2 4.97181 2C6.47494 2 7.47181 2.92188 7.99994 3.59375C8.52806 2.92188 9.52494 2 11.0281 2C12.9218 2 14.4781 3.57813 14.4999 5.51875C14.5156 7.2125 13.9187 8.77813 12.6687 10.3C11.4437 11.7937 9.73744 13.0281 8.56244 13.825C8.39056 13.9437 8.19681 14 7.99994 14ZM4.97181 3C3.62494 3 2.51556 4.13438 2.49994 5.53125C2.46556 8.8 5.26244 11.1438 7.99994 13C10.7374 11.1406 13.5343 8.8 13.4999 5.53125C13.4843 4.1375 12.3781 3 11.0281 3C9.34056 3 8.45306 4.70625 8.44681 4.725C8.36244 4.89375 8.19056 5 7.99994 5C7.80931 5 7.63744 4.89375 7.55306 4.72188C7.54369 4.70625 6.65619 3 4.97181 3Z"
-                          fill="#FF0000"
-                        />
-                      </svg>
-                      Wishlist
-                    </button>
                   </div>
                 </div>
               </div>

@@ -1,46 +1,33 @@
 import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiLogInCircle } from "react-icons/bi";
 import { FcGoogle } from "react-icons/fc";
-import axios from "axios";
-
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
-
-  const location = useLocation();
-  // console.log(location.pathname);
+  const { signInUser, signInWithGoogle } = useContext(AuthContext);
+  console.log(signInUser);
   const navigate = useNavigate();
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    // console.log(email, password);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
 
-    signIn(email, password)
+    signInUser(email, password)
       .then((result) => {
-        const loggedInUser = result.user;
-        console.log(loggedInUser);
-
-        const user = { email };
-
-        //get access token
-        axios
-          .post("http://localhost:3000/jwt", user, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.success) {
-              navigate(location?.state ? location?.state : "/");
-            }
-          });
+        console.log(result.user);
+        console.log();
+        Swal.fire("Login successful!");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "wrong Information",
+        });
       });
   };
   const handleGoogleSignIn = () => {
