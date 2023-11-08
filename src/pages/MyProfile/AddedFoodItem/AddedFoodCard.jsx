@@ -31,7 +31,7 @@ const AddedFoodCard = ({ addedFood }) => {
     <div>
       <div className="flex justify-center flex-col bg-red-50">
         <div className="relative group flex justify-center items-center">
-          <img src={addedFood.image} alt="shoes-1" />
+          <img src={addedFood.image} alt="shoes-1" className="h-[280px]" />
           <div>
             <Link
               to={`/myprofile/update-food-item/${addedFood._id}`}

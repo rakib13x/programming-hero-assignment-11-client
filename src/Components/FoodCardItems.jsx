@@ -35,7 +35,7 @@ const FoodCardItems = ({ food }) => {
     <div>
       <div className="flex justify-center flex-col">
         <div className="relative group flex justify-center items-center">
-          <img src={image} alt="shoes-1" />
+          <img src={image} alt="shoes-1" className="h-[280px]" />
           <div>
             <Link to={`/food-details/${food._id}`}>
               <button className="opacity-0 group-hover:opacity-100 py-4 w-10/12 sm:w-11/12 md:w-10/12 xl:w-11/12 flex justify-center  bg-red-50 absolute bottom-6 inset-x-6 sm:inset-x-3 md:inset-x-6 lg:inset-x-5 xl:inset-x-4 items-center shadow">

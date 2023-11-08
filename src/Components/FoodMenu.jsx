@@ -65,7 +65,7 @@ const FoodMenu = () => {
 
   return (
     <>
-      <div className="bg-red-50">
+      <div className="bg-red-50 pt-20">
         <div className="max-w-md mx-auto">
           <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
             <div className="grid place-items-center h-full w-12 text-gray-300">
@@ -92,7 +92,7 @@ const FoodMenu = () => {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
-            <button onClick={handleSearch}>Search</button>
+            <button onClick={handleSearch}></button>
           </div>
         </div>
         <div className="2xl:mx-auto 2xl:container md:py-12 lg:px-20 md:px-6 py-9 px-4">
@@ -136,7 +136,7 @@ const FoodMenu = () => {
             </div>
           </div>
           <div className="flex justify-center items-center">
-            <div className="mt-12 grid-cols-1 grid sm:grid-cols-2 lg:grid-cols-3  gap-y-12 lg:gap-x-8 lg:gap-y-8 md:gap-x-6 md:gap-y-10 2xl:flex 2xl:flex-wrap justify-between">
+            <div className="mt-12 grid-cols-1 grid xl:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2   gap-y-12 lg:gap-x-8 lg:gap-y-8 md:gap-x-6 md:gap-y-10 justify-between">
               {filteredFoods.map((food, index) => (
                 <FoodCardItems
                   key={`${food._id}_${index}`}
@@ -148,12 +148,14 @@ const FoodMenu = () => {
             </div>
           </div>
           <div>
-            <button onClick={handlePrevPage}>Prev</button>
+            <button onClick={handlePrevPage} className="mr-5">
+              Prev
+            </button>
             {pages.map((page) => (
               <button
                 onClick={() => setCurrentPage(page)}
                 key={page}
-                className={`join-item btn ${
+                className={`join-item btn mr-5 ${
                   currentPage === page ? "selected" : ""
                 }`}
               >

@@ -61,17 +61,29 @@ const router = createBrowserRouter([
       },
       {
         path: "/myprofile/add-food-item",
-        element: <AddFoodItem />,
+        element: (
+          <PrivateRoute>
+            <AddFoodItem />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myprofile/update-food-item/:id",
-        element: <UpdateFoodItem />,
+        element: (
+          <PrivateRoute>
+            <UpdateFoodItem />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/foodItems/${params.id}`),
       },
       {
         path: "/food-details/:id",
-        element: <FoodDetails />,
+        element: (
+          <PrivateRoute>
+            <FoodDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/foodItems/${params.id}`),
       },

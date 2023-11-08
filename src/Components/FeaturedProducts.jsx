@@ -1,5 +1,6 @@
 import React from "react";
 import { featuredProducts } from "../data";
+import { Link } from "react-router-dom";
 const FeaturedProducts = () => {
   return (
     <div className="w-screen overflow-x-scroll text-red-500 pt-[400px] md:pt-[650px]">
@@ -29,9 +30,11 @@ const FeaturedProducts = () => {
               </h1>
               <p className="p-4 2xl:p-8">{item.desc}</p>
               <span className="text-xl font-bold">${item.price}</span>
-              <button className="bg-red-500 text-white p-2 rounded-md">
-                Add to Cart
-              </button>
+              <Link to="/fooditems">
+                <button className="bg-red-500 text-white p-2 rounded-md">
+                  order Now
+                </button>
+              </Link>
             </div>
           </div>
         ))}
