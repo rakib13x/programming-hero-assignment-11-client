@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-
+import Swal from "sweetalert2";
 const FoodPurchasePage = () => {
   const foodPurchase = useLoaderData();
-  const { _id, category, Origin, image } = foodPurchase;
-  console.log(foodPurchase.food);
+  const { _id, category, Origin, image, userName, quantity } = foodPurchase;
+  console.log(foodPurchase);
   const { user } = useContext(AuthContext);
   console.log(user);
 
@@ -17,15 +17,28 @@ const FoodPurchasePage = () => {
     const email = form.email.value;
     const price = form.price.value;
     const food = form.food.value;
-    const quantity = form.quantity.value;
+    const quantityToPurchase = parseInt(form.quantity.value, 10); // Parse quantity to an integer
 
+    if (userName === user?.userName) {
+      alert("You cannot purchase your own added food items.");
+      return;
+    }
+
+    if (quantityToPurchase > quantity) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You cannot purchase more than the available quantity.",
+      });
+      return;
+    }
     const purchasing = {
       date,
       name,
       email,
       price,
       food,
-      quantity,
+      quantity: quantityToPurchase,
       image,
     };
     console.log(purchasing);

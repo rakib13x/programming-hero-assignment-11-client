@@ -57,7 +57,7 @@ const FoodDetails = () => {
                   </div>
                   <div></div>
 
-                  <div className="md:flex items-center justify-between mt-4">
+                  <div className="md:flex items-center justify-between mt-4 w-[600px]">
                     <p className="text-base leading-none text-red-500">
                       {foodDetail.description}
                     </p>
