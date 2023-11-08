@@ -130,7 +130,7 @@ const FoodPurchasePage = () => {
         </div>
         <div className="form-control mt-6">
           <input
-            className="btn btn-primary btn-block"
+            className="btn bg-red-500 btn-block text-white"
             type="submit"
             value="confirm"
           />
