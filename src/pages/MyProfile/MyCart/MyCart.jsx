@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyCart = () => {
   const loader = useLoaderData();
@@ -17,6 +18,58 @@ const MyCart = () => {
   }, [url]);
 
   console.log(purchased);
+
+  const handleDelete = (id) => {
+    if (!id) {
+      console.log("ID is undefined or empty");
+      return;
+    }
+    Swal.fire({
+      title: "Confirm Deletion",
+      text: "Are you sure you want to remove this item from your cart?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, remove it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/mycart/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            if (res.status === 404) {
+              throw new Error("Item not found");
+            }
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              // Item removed successfully
+              Swal.fire(
+                "Deleted!",
+                "The item has been removed from your cart.",
+                "success"
+              );
+              const remaining = purchased.filter(
+                (purchase) => purchase._id !== id
+              );
+              setPurchased(remaining);
+            } else {
+              Swal.fire(
+                "Error",
+                "Failed to remove the item from your cart.",
+                "error"
+              );
+            }
+          })
+          .catch((error) => {
+            Swal.fire("Error", error.message, "error");
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -44,9 +97,13 @@ const MyCart = () => {
                     <p>{user?.email}</p>
                   </div>
                 </div>
-
                 <h2 className="font-bold">${item.price}</h2>
-                <button className="btn btn-primary">remove</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleDelete(item._id)}
+                >
+                  remove
+                </button>
               </div>
             ))}
           </div>

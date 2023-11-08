@@ -14,7 +14,7 @@ const AddedFoodItem = () => {
     }
   }, [loadedAddedFoods]);
   return (
-    <div className="2xl:mx-auto 2xl:container md:py-12 lg:px-20 md:px-6 py-9 px-4">
+    <div className="2xl:mx-auto 2xl:container md:py-12 lg:px-20 md:px-6 py-9 px-4 bg-red-50">
       <div className="flex flex-col justify-start items-start">
         <div className>
           <p className="text-sm leading-none font-normal text-gray-600">
