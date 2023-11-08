@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const FoodDetails = () => {
   const food = useLoaderData();
   console.log(food);
   const { id } = useParams();
+  const [itemQuantity, setItemQuantity] = useState(0);
   const [foodDetail, setFoodDetail] = useState(null);
+  console.log(foodDetail);
+  console.log(itemQuantity);
 
   useEffect(() => {
     fetch(`http://localhost:3000/foodItems/${id}`)
@@ -18,6 +22,7 @@ const FoodDetails = () => {
       .then((data) => {
         // Set the fetched data in the state
         setFoodDetail(data);
+        setItemQuantity(data.quantity);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -34,6 +39,19 @@ const FoodDetails = () => {
 
   const increment = () => {
     setQuantity(quantity + 1);
+  };
+  console.log(itemQuantity);
+  const navigate = useNavigate();
+  const handlePurchaseClick = () => {
+    if (itemQuantity > 0) {
+      navigate(`/purchase/${foodDetail._id}`);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "this Item isn't Available",
+      });
+    }
   };
 
   return (
@@ -110,11 +128,15 @@ const FoodDetails = () => {
                     </button>
                   </div>
                   <div className="lg:flex mt-8 gap-4">
-                    <Link to={`/purchase/${foodDetail._id}`}>
-                      <button className="btn btn-block btn-error bg-red-500 text-white">
-                        Purchase
-                      </button>
-                    </Link>
+                    <button
+                      className="btn btn-block btn-error bg-red-500 text-white"
+                      disabled={itemQuantity === 0}
+                      onClick={handlePurchaseClick}
+                    >
+                      {itemQuantity === 0
+                        ? "Items Quantity Isn't Available"
+                        : "Purchase"}
+                    </button>
                   </div>
                 </div>
               </div>
