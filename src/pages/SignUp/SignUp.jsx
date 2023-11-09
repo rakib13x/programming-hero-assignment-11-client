@@ -76,91 +76,129 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="hero min-h-screen rounded-xl">
-        <div className="hero-content flex-col">
-          <h1 className="text-5xl font-bold ">Sign Up Here</h1>
+      <div className="flex min-h-full flex-1">
+        <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+          <div className="mx-auto w-full max-w-sm lg:w-96">
+            <div>
+              <h1 className="text-5xl font-bold ">Sign Up Here</h1>
+            </div>
 
-          <div className="text-center lg:text-left"></div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-gray-100">
-            <form onSubmit={handleRegister} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
+            <div className="mt-10">
+              <div>
+                <form onSubmit={handleRegister} className="space-y-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Name
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="name"
+                        className="h-12 pl-4 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="name"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Email
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="email"
+                        className="h-12 pl-4 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="email"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Photo url</span>
-                </label>
+                  <div>
+                    <label
+                      htmlFor="photo"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Photo url
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        name="photo"
+                        placeholder="photo"
+                        className="h-12 pl-4 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                <input
-                  type="text"
-                  name="photo"
-                  placeholder="photo"
-                  className="input input-bordered"
-                  required
-                />
+                  <div>
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Password
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="password"
+                        placeholder="password"
+                        name="password"
+                        className="h-12 pl-4 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6"
+                        required
+                      />
+                      <label className="label">
+                        <a href="#" className="label-text-alt link link-hover">
+                          Forgot password?
+                        </a>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button
+                      type="submit"
+                      className="flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                    >
+                      Register{" "}
+                      <BiLogOutCircle className="text-2xl text-white" />
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  className="input"
-                  required
-                />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-neutral text-white">
-                  Register <BiLogOutCircle className="text-2xl text-white" />
+
+              <p className="flex justify-center text-sm pt-1 text-center">
+                Sign up with
+              </p>
+              <p className=" flex justify-center pt-2">
+                <button onClick={handleGoogleSignUp}>
+                  <FcGoogle className="text-3xl" />
                 </button>
-              </div>
-            </form>
-            <p className="flex justify-center text-sm pt-1 text-center">
-              Sign up with
-            </p>
-            <p className=" flex justify-center pt-2">
-              <button onClick={handleGoogleSignUp}>
-                <FcGoogle className="text-3xl" />
-              </button>
-            </p>
-            <p>
-              Already have an account? Please{" "}
-              <Link to="/login">
-                <span className="font-bold text-black">login</span>
-              </Link>{" "}
-              Here
-            </p>
+              </p>
+              <p>
+                Already have an account? Please{" "}
+                <Link to="/login">
+                  <span className="font-bold text-red-500">login</span>
+                </Link>{" "}
+                Here
+              </p>
+            </div>
           </div>
+        </div>
+        <div className="relative hidden w-0 flex-1 lg:block">
+          <img
+            className="absolute inset-0 h-full w-full object-cover"
+            src="https://i.ibb.co/DrwfNqd/IMG-20231109-181030-853.jpg"
+            alt=""
+          />
         </div>
       </div>
     </>

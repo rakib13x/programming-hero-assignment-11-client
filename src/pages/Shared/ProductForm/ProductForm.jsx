@@ -135,7 +135,7 @@ const Productform = () => {
         <div className="pt-8 flex justify-center">
           <input
             type="submit"
-            value="Add Item"
+            value="submit"
             className="btn w-2/4 h-10 rounded-xl bg-red-500 border-none text-white hover:bg-gray-200 hover:text-black cursor-pointer"
           />
         </div>
