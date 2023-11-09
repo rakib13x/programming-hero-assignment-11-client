@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
           >
             {/* IMAGE CONTAINER */}
             {item.img && (
-              <div className="relative flex-1 w-full hover:rotate-[60deg] transition-all duration-500">
+              <div className=" flex-1 w-full hover:rotate-[60deg] transition-all duration-500">
                 <img
                   src={item.img}
                   alt=""
