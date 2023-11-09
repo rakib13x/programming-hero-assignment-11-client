@@ -10,32 +10,39 @@ const FoodMenu = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const [filteredFoods, setFilteredFoods] = useState([]);
+  const [sortDirection, setSortDirection] = useState("asc");
 
-  // Load initial data and update foods state
+  const handleSortChange = (direction) => {
+    setSortDirection(direction);
+    setCurrentPage(0); // Reset current page when changing the sort
+  };
+
   useEffect(() => {
     if (Array.isArray(loadedFoods)) {
       setFoods(loadedFoods);
     }
   }, [loadedFoods]);
 
-  // Fetch data based on current page
   useEffect(() => {
     fetch(
-      `http://localhost:3000/foodItems?page=${currentPage}&size=${itemsPerPage}`
+      `http://localhost:3000/foodItems?page=${currentPage}&size=${itemsPerPage}&sortDirection=${sortDirection}`
     )
       .then((res) => res.json())
       .then((data) => setFoods(data));
-  }, [currentPage, itemsPerPage]);
+  }, [currentPage, itemsPerPage, sortDirection]);
 
-  // Filter foods based on search input when the "Search" button is clicked
   useEffect(() => {
-    const filtered = foods.filter((food) =>
+    // Use a copy of the foods array for filtering
+    const foodsCopy = [...foods];
+
+    const filtered = foodsCopy.filter((food) =>
       food.food.toLowerCase().includes(searchInput.toLowerCase())
     );
+
     setFilteredFoods(filtered);
   }, [foods, searchInput]);
 
-  const numberOfPages = Math.ceil(loadedFoods.length / itemsPerPage);
+  const numberOfPages = Math.ceil(filteredFoods.length / itemsPerPage);
   const pages = Array.from({ length: numberOfPages }, (_, i) => i);
 
   const handleItemsPerPage = (e) => {
@@ -120,15 +127,15 @@ const FoodMenu = () => {
               <div>
                 <select
                   className=" border-red-500 w-full max-w-xs text-red-500 h-12 rounded-md"
-                  onChange={handleItemsPerPage}
+                  onChange={(e) => handleSortChange(e.target.value)}
                 >
                   <option disabled selected className="">
                     Sort by price
                   </option>
-                  <option value="9" className="text-red-500">
+                  <option value="asc" className="text-red-500">
                     Low to High
                   </option>
-                  <option value="9" className="text-red-500">
+                  <option value="desc" className="text-red-500">
                     High to Low
                   </option>
                 </select>
