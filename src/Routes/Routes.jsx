@@ -41,7 +41,10 @@ const router = createBrowserRouter([
         path: "/foodItems",
         element: <FoodMenu />,
 
-        loader: () => fetch("http://localhost:3000/foodItems"),
+        loader: () =>
+          fetch(
+            "https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems"
+          ),
       },
 
       {
@@ -56,7 +59,10 @@ const router = createBrowserRouter([
             <AddedFoodItem />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/foodItems"),
+        loader: () =>
+          fetch(
+            "https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems"
+          ),
       },
       {
         path: "/myprofile/add-food-item",
@@ -74,7 +80,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/foodItems/${params.id}`),
+          fetch(
+            `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems/${params.id}`
+          ),
       },
       {
         path: "/food-details/:id",
@@ -84,7 +92,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/foodItems/${params.id}`),
+          fetch(
+            `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems/${params.id}`
+          ),
       },
       {
         path: "/purchase/:id",
@@ -94,7 +104,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/foodItems/${params.id}`),
+          fetch(
+            `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems/${params.id}`
+          ),
       },
       {
         path: "/myprofile/ordered-food-item",
@@ -103,7 +115,10 @@ const router = createBrowserRouter([
             <MyCart />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/mycart"),
+        loader: () =>
+          fetch(
+            "https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/mycart"
+          ),
       },
     ],
   },

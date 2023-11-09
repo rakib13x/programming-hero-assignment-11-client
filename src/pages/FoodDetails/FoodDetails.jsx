@@ -12,7 +12,9 @@ const FoodDetails = () => {
   console.log(itemQuantity);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/foodItems/${id}`)
+    fetch(
+      `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems/${id}`
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

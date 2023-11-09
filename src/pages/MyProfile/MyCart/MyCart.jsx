@@ -9,7 +9,7 @@ const MyCart = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
   const [purchased, setPurchased] = useState([]);
-  const url = `http://localhost:3000/mycart?email=${user?.email}`;
+  const url = `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/mycart?email=${user?.email}`;
 
   useEffect(() => {
     fetch(url)
@@ -34,9 +34,12 @@ const MyCart = () => {
       confirmButtonText: "Yes, remove it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/mycart/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/mycart/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => {
             if (res.status === 404) {
               throw new Error("Item not found");

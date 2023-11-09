@@ -38,7 +38,7 @@ const FoodPurchasePage = () => {
     };
     console.log(purchasing);
 
-    fetch("http://localhost:3000/mycart", {
+    fetch("https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/mycart", {
       method: "POST",
       headers: {
         "content-type": "application/json",

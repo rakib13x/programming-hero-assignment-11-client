@@ -30,13 +30,16 @@ const AddFoodItem = () => {
     };
     console.log(newFood);
 
-    fetch("http://localhost:3000/foodItems", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newFood),
-    })
+    fetch(
+      "https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newFood),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

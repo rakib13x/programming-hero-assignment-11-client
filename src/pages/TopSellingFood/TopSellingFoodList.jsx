@@ -6,7 +6,9 @@ const TopSellingFoodList = () => {
   const [topSelling, setTopSelling] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/topSellingFoodItems`)
+    fetch(
+      `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/topSellingFoodItems`
+    )
       .then((res) => res.json())
       .then((data) => setTopSelling(data))
       .catch((error) => {

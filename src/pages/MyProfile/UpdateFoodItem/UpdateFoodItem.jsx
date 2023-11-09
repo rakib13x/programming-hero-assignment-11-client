@@ -38,13 +38,16 @@ const UpdateFoodItem = () => {
     console.log(updatedFood);
 
     //send data to server
-    fetch(`http://localhost:3000/foodItems/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedFood),
-    })
+    fetch(
+      `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedFood),
+      }
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");

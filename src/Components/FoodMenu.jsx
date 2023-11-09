@@ -25,7 +25,7 @@ const FoodMenu = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/foodItems?page=${currentPage}&size=${itemsPerPage}&sortDirection=${sortDirection}`
+      `https://food-order-nbdqgpucf-rakib13x-gmailcom.vercel.app/foodItems?page=${currentPage}&size=${itemsPerPage}&sortDirection=${sortDirection}`
     )
       .then((res) => res.json())
       .then((data) => setFoods(data));
