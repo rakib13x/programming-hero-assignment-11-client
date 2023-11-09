@@ -42,7 +42,7 @@ const FoodCardItems = ({ food }) => {
     setStars(newArr);
   };
   return (
-    <div>
+    <div className="">
       <motion.li
         variants={fadeInAnimationsVariants}
         initial="initial"
