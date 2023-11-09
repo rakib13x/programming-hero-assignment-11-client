@@ -47,6 +47,9 @@ const NavBar = () => {
       <li>
         <NavLink to="/blog">blog</NavLink>
       </li>
+      <li>
+        <NavLink to="/foodItems">Foods</NavLink>
+      </li>
     </>
   ) : (
     <>
@@ -59,6 +62,9 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to="/signup">Register</NavLink>
+      </li>
+      <li>
+        <NavLink to="/foodItems">Foods</NavLink>
       </li>
     </>
   );

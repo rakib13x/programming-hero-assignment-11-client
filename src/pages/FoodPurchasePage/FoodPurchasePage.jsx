@@ -25,11 +25,6 @@ const FoodPurchasePage = () => {
     }
 
     if (quantityToPurchase > quantity) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "You cannot purchase more than the available quantity.",
-      });
       return;
     }
     const purchasing = {
@@ -54,7 +49,11 @@ const FoodPurchasePage = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          alert("service book successfully");
+          Swal.fire({
+            icon: "success",
+            title: "Thank you",
+            text: "thank you for purchasing Our Product",
+          });
         }
       });
   };

@@ -42,12 +42,8 @@ const FoodCardItems = ({ food }) => {
     setStars(newArr);
   };
   return (
-    <div className="">
-      <motion.li
-        variants={fadeInAnimationsVariants}
-        initial="initial"
-        whileInView="animate"
-      >
+    <>
+      <div className="">
         <div className="flex justify-center flex-col">
           <div className="relative group flex justify-center items-center">
             <img src={image} alt="shoes-1" className="h-[280px]" />
@@ -101,9 +97,16 @@ const FoodCardItems = ({ food }) => {
             </div>
           </div>
         </div>
-      </motion.li>
-    </div>
+      </div>
+    </>
   );
 };
 
 export default FoodCardItems;
+<Link to={"/foodItems"}>
+  <button className="opacity-0 group-hover:opacity-100 py-4 w-10/12 sm:w-11/12 md:w-10/12 xl:w-11/12 flex justify-center  bg-red-50 absolute bottom-6 inset-x-6 sm:inset-x-3 md:inset-x-6 lg:inset-x-5 xl:inset-x-4 items-center shadow">
+    <p className="text-base text-center font-medium leading-4 text-red-500 flex flex-shrink-0">
+      Buy
+    </p>
+  </button>
+</Link>;

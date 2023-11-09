@@ -117,7 +117,7 @@ const FoodMenu = () => {
                   </p>
                 </div>
                 <div className="flex justify-start items-end mb-1 mt-2 sm:mt-0">
-                  <span className="text-base leading-none font-normal text-gray-600">
+                  <span className="text-red-500 leading-none font-normal ">
                     {filteredFoods.length > 0
                       ? filteredFoods.length
                       : foods.length}
