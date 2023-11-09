@@ -14,10 +14,12 @@ import FoodPurchasePage from "../pages/FoodPurchasePage/FoodPurchasePage";
 import MyCart from "../pages/MyProfile/MyCart/MyCart";
 import Blog from "../pages/Blog/Blog";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/Error/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
